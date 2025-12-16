@@ -1,0 +1,60 @@
+{
+  "name": "@connectaryal/react-rbac",
+  "version": "1.0.0",
+  "description": "A flexible Role-Based Access Control (RBAC) library",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "react",
+    "rbac",
+    "role-based-access-control",
+    "policy-based-access-control",
+    "permissions",
+    "authorization",
+    "access-control"
+  ],
+  "author": {
+    "name": "Shiva Aryal",
+    "email": "aryalshiva005@gmail.com",
+    "url": "https://github.com/connectaryal"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connectaryal/react-rbac.git"
+  },
+  "bugs": {
+    "url": "https://github.com/connectaryal/react-rbac/issues"
+  },
+  "homepage": "https://github.com/connectaryal/react-rbac#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.0.10",
+    "react": "^19.0.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3"
+  }
+}
