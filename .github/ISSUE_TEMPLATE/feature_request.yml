@@ -1,0 +1,185 @@
+name: 💡 Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-discussion"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! 💡
+
+        We love hearing ideas from the community. Please provide as much detail as possible to help us understand your proposal.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What pain point are you experiencing?
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How should this feature work? Be as detailed as possible.
+      placeholder: |
+        Add a new hook `useRoleCheck()` that returns a boolean indicating if the user has a specific role.
+
+        The hook should:
+        - Accept a role name or array of roles
+        - Support 'SOME' or 'EVERY' check type
+        - Return boolean or null when not initialized
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe a real-world scenario where you would use this feature
+      placeholder: |
+        In our admin dashboard, we need to show different navigation items based on user roles.
+        Currently we have to use useRBACContext and manually check roles, which is verbose.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Usage
+      description: Show how you'd like to use this feature with code examples
+      placeholder: |
+        ```tsx
+        function AdminNav() {
+          const isAdmin = useRoleCheck('admin');
+          const hasManagerAccess = useRoleCheck(['admin', 'manager'], 'SOME');
+
+          return (
+            <nav>
+              {isAdmin && <Link to="/settings">Settings</Link>}
+              {hasManagerAccess && <Link to="/reports">Reports</Link>}
+            </nav>
+          );
+        }
+        ```
+      render: tsx
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: |
+        - Using useRBACContext and checking roles manually (current workaround)
+        - Using permission-based checks instead of role checks
+        - Creating a custom hook wrapper
+    validations:
+      required: false
+
+  - type: dropdown
+    id: importance
+    attributes:
+      label: How important is this to you?
+      description: Help us prioritize features
+      options:
+        - Nice to have (would be convenient)
+        - Important (would improve my workflow significantly)
+        - Very important (blocking or making things difficult)
+        - Critical (can't proceed without this)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: What area does this feature relate to?
+      options:
+        - Hooks (new or improved hooks)
+        - Components (new or improved components)
+        - Core Logic (RBAC class functionality)
+        - TypeScript (type definitions or inference)
+        - Developer Experience (DX improvements)
+        - Performance (optimization)
+        - Documentation (docs improvements)
+        - Examples (new examples or templates)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: breaking-changes
+    attributes:
+      label: Breaking Changes
+      description: Would this feature require breaking changes to the existing API?
+      placeholder: |
+        - No breaking changes expected
+        - OR: This would require changing the signature of X
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information, screenshots, mockups, or references
+      placeholder: |
+        - Similar feature in CASL: [link]
+        - Related discussion: [link]
+        - Mockup/diagram: [attach image]
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you be willing to help implement this feature?
+      options:
+        - label: I'm willing to submit a Pull Request for this feature
+          required: false
+        - label: I can help with documentation for this feature
+          required: false
+        - label: I can help with testing this feature
+          required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues and discussions to ensure this hasn't been suggested before
+          required: true
+        - label: This feature fits the project's scope (simple RBAC for React applications)
+          required: true
+        - label: I have provided a clear use case and example usage
+          required: true
+        - label: I understand this is a suggestion and may not be implemented immediately
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### What happens next?
+
+        1. The maintainers will review your feature request
+        2. If approved, it will be added to the roadmap
+        3. We may ask for clarification or additional details
+        4. Community feedback will be gathered through discussion
+        5. Implementation will be prioritized based on impact and effort
+
+        **Note:** Not all feature requests can be implemented. We prioritize features that:
+        - Align with the project's goal (simple RBAC for React)
+        - Benefit the majority of users
+        - Don't add significant complexity
+        - Maintain backward compatibility when possible
+
+        Thank you for helping improve @connectaryal/rbac! 🚀

@@ -1,0 +1,124 @@
+name: ❓ Question
+description: Ask a question about usage or concepts
+title: "[Question]: "
+labels: ["question"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question? We're here to help! 💬
+
+        **Note:** For general discussions and community Q&A, consider using [GitHub Discussions](https://github.com/connectaryal/rbac/discussions) instead.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: How do I use sector-based restrictions in a multi-tenant application?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are you trying to accomplish? Providing context helps us give better answers.
+      placeholder: |
+        I'm building a SaaS application where users belong to different organizations.
+        Each organization should have different permission restrictions based on their subscription plan.
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What Have You Tried?
+      description: What solutions or approaches have you already attempted?
+      placeholder: |
+        I tried using the sector feature but I'm not sure how to switch sectors dynamically when users switch organizations.
+
+        ```tsx
+        // My current attempt
+        const rbac = new RoleBasedAccessControl({
+          roles: ['admin'],
+          sector: currentOrg
+        });
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Relevant Code
+      description: Share any relevant code (optional)
+      placeholder: |
+        ```tsx
+        // Your code here
+        ```
+      render: tsx
+    validations:
+      required: false
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Question Category
+      description: What is your question about?
+      options:
+        - Getting Started / Setup
+        - Hooks Usage
+        - Components Usage
+        - Roles and Permissions
+        - Restrictions and Sectors
+        - TypeScript / Types
+        - Performance
+        - Integration (Next.js, etc.)
+        - Migration from other libraries
+        - Best Practices
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation Reference
+      description: Which documentation have you already checked?
+      placeholder: |
+        - [ ] README.md
+        - [ ] REACT_GUIDE.md
+        - [ ] FEATURES.md
+        - [ ] Examples folder
+        - [ ] Searched existing issues
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before asking, please confirm
+      options:
+        - label: I have checked the documentation for an answer
+          required: true
+        - label: I have searched existing issues and discussions
+          required: true
+        - label: I have provided context about what I'm trying to accomplish
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### Getting Help
+
+        - **🚀 Quick answers**: Check the [documentation](https://github.com/connectaryal/rbac#readme) and [examples](https://github.com/connectaryal/rbac/tree/main/examples)
+        - **💬 Community discussion**: Use [GitHub Discussions](https://github.com/connectaryal/rbac/discussions) for broader questions
+        - **🐛 Found a bug?**: Open a [Bug Report](https://github.com/connectaryal/rbac/issues/new/choose) instead
+        - **💡 Have an idea?**: Submit a [Feature Request](https://github.com/connectaryal/rbac/issues/new/choose)
+
+        We typically respond to questions within 24-48 hours. Thank you for your patience! 🙏

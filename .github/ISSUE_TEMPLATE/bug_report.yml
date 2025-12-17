@@ -1,0 +1,177 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! 🐛
+
+        Please fill out the information below to help us understand and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: When I do X, Y happens instead of Z...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reproduce the issue
+      placeholder: |
+        1. Install @connectaryal/rbac
+        2. Create component with usePermission hook
+        3. Wrap with RBACProvider
+        4. See error in console
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen?
+      placeholder: The component should render without errors and hasPermission should be true
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happens?
+      placeholder: Component throws error "Cannot read property 'can' of undefined"
+    validations:
+      required: true
+
+  - type: input
+    id: reproduction-link
+    attributes:
+      label: Reproduction Link
+      description: Link to CodeSandbox, StackBlitz, or GitHub repo demonstrating the issue
+      placeholder: https://codesandbox.io/s/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: code-snippet
+    attributes:
+      label: Code Snippet
+      description: Minimal code that reproduces the issue
+      placeholder: |
+        ```tsx
+        import { RBACProvider, Can } from '@connectaryal/rbac';
+
+        function App() {
+          return (
+            <RBACProvider config={{ roles: ['editor'] }}>
+              <Can permissions="edit">
+                <button>Edit</button>
+              </Can>
+            </RBACProvider>
+          );
+        }
+        ```
+      render: tsx
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your environment details
+      value: |
+        - @connectaryal/rbac version:
+        - React version:
+        - React DOM version:
+        - TypeScript version:
+        - Node.js version:
+        - Package manager (npm/yarn/pnpm):
+        - Browser (if applicable):
+        - Operating System:
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Messages / Logs
+      description: Any error messages, console logs, or stack traces
+      placeholder: Paste error messages or logs here
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain the problem
+      placeholder: Drag and drop images here or paste image URLs
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the problem
+      placeholder: |
+        - This started happening after updating to version X
+        - Only happens in production build
+        - Works fine in development mode
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this issue?
+      options:
+        - Low (minor inconvenience)
+        - Medium (affects functionality but has workaround)
+        - High (blocks important functionality)
+        - Critical (app crashes or data loss)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues to ensure this hasn't been reported before
+          required: true
+        - label: I have provided all the information requested above
+          required: true
+        - label: I have included steps to reproduce the issue
+          required: true
+        - label: I have checked the documentation for solutions
+          required: false
+        - label: I have included a reproduction link or code snippet
+          required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ### What happens next?
+
+        1. A maintainer will review your issue within 48 hours
+        2. We may ask for additional information or clarification
+        3. Once confirmed, the issue will be prioritized and worked on
+        4. You'll be notified when there's an update
+
+        Thank you for helping improve @connectaryal/rbac! 🙏

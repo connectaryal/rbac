@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/connectaryal/rbac/discussions
+    about: Ask questions, share ideas, and discuss with the community
+  - name: 📚 Documentation
+    url: https://github.com/connectaryal/rbac#readme
+    about: Read the documentation and guides before opening an issue
+  - name: 🎓 React Integration Guide
+    url: https://github.com/connectaryal/rbac/blob/main/REACT_GUIDE.md
+    about: Complete guide for using @connectaryal/rbac in React applications
+  - name: 💡 Feature Requests Discussion
+    url: https://github.com/connectaryal/rbac/discussions/categories/ideas
+    about: Discuss feature ideas with the community before opening a formal request
+  - name: 🐦 Twitter
+    url: https://twitter.com/connectaryal
+    about: Follow for updates, tips, and quick questions
