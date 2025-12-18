@@ -58,14 +58,12 @@ export type TSectorRestrictions<
 > = Record<TSectorName, TPerm[]>;
 
 /**
- * Configuration object for initializing the Role-Based Access Control (RBAC) system.
+ * Base configuration interface with shared properties.
  *
- * @template TRoleName - Type of role name strings.
  * @template TPerm - Type of allowed permission strings.
  * @template TSectorName - Type of sector name strings.
  */
-export interface TConfig<
-  TRoleName extends TRole = TRole,
+interface TBaseConfig<
   TPerm extends TPermission = TPermission,
   TSectorName extends TSector = TSector,
 > {
@@ -75,20 +73,6 @@ export interface TConfig<
    * @optional
    */
   permissions?: TPerm[];
-
-  /**
-   * List of roles assigned to the user.
-   * Permissions are resolved from role definitions.
-   * @optional
-   */
-  roles?: TRoleName[];
-
-  /**
-   * Defines which permissions each role has.
-   * Maps role names to arrays of permissions.
-   * @optional
-   */
-  roleDefinitions?: TRoleDefinitions<TRoleName, TPerm>;
 
   /**
    * List of explicitly restricted/denied permissions.
@@ -112,3 +96,73 @@ export interface TConfig<
    */
   sectorRestrictions?: TSectorRestrictions<TSectorName, TPerm>;
 }
+
+/**
+ * Configuration when role definitions are provided.
+ * Ensures that assigned roles must be keys from the role definitions.
+ *
+ * @template TRoleDefinitions - The role definitions object.
+ * @template TPerm - Type of allowed permission strings.
+ * @template TSectorName - Type of sector name strings.
+ */
+export interface TConfigWithRoleDefinitions<
+  TRoleDefinitions extends Record<string, TPerm[]>,
+  TPerm extends TPermission = TPermission,
+  TSectorName extends TSector = TSector,
+> extends TBaseConfig<TPerm, TSectorName> {
+  /**
+   * List of roles assigned to the user.
+   * Must be keys that exist in roleDefinitions.
+   * @optional
+   */
+  roles?: (keyof TRoleDefinitions)[];
+
+  /**
+   * Defines which permissions each role has.
+   * Maps role names to arrays of permissions.
+   * @required when using this interface
+   */
+  roleDefinitions: TRoleDefinitions;
+}
+
+/**
+ * Configuration when no role definitions are provided.
+ * Allows any role names to be assigned.
+ *
+ * @template TRoleName - Type of role name strings.
+ * @template TPerm - Type of allowed permission strings.
+ * @template TSectorName - Type of sector name strings.
+ */
+export interface TConfigWithoutRoleDefinitions<
+  TRoleName extends TRole = TRole,
+  TPerm extends TPermission = TPermission,
+  TSectorName extends TSector = TSector,
+> extends TBaseConfig<TPerm, TSectorName> {
+  /**
+   * List of roles assigned to the user.
+   * Can be any role names when no role definitions are provided.
+   * @optional
+   */
+  roles?: TRoleName[];
+
+  /**
+   * Role definitions are not provided in this configuration.
+   */
+  roleDefinitions?: never;
+}
+
+/**
+ * Configuration object for initializing the Role-Based Access Control (RBAC) system.
+ * This is a union type that ensures proper type safety based on whether role definitions are provided.
+ *
+ * @template TRoleName - Type of role name strings.
+ * @template TPerm - Type of allowed permission strings.
+ * @template TSectorName - Type of sector name strings.
+ */
+export type TConfig<
+  TRoleName extends TRole = TRole,
+  TPerm extends TPermission = TPermission,
+  TSectorName extends TSector = TSector,
+> =
+  | TConfigWithRoleDefinitions<Record<TRoleName, TPerm[]>, TPerm, TSectorName>
+  | TConfigWithoutRoleDefinitions<TRoleName, TPerm, TSectorName>;
